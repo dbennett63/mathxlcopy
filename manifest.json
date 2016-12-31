@@ -1,0 +1,46 @@
+//CORS hacking attempts persist here
+//current version has button to kick, context menu to kick, and autoexec on the matches domains
+//TODO: icons
+//TODO: figure out iframe CORS issue
+{
+  "name": "Math XL Copy",
+  "description": "Make the current page red",
+  "version": "0.1",
+  "permissions": [
+    "contextMenus",
+    "activeTab",
+    "*://*.mathxl.com/",
+    "*://*.ecollege.com/",
+    "https://www.mathxl.com/*",
+    "*://*.pearsoncmg.com/",
+    "https://xlitemprod.pearsoncmg.com/",
+    "*://*.myfinancelab.com/",
+    "*://*.google-analytics.com/",
+    "https://www.google-analytics.com/"
+  ],
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": false,
+    "all_frames": true
+  },
+  "browser_action": {
+    "default_title": "Make this page red"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://*.mathxl.com/",
+        "*://*.ecollege.com/",
+        "https://www.mathxl.com/*",
+        "*://*.pearsoncmg.com/",
+        "https://xlitemprod.pearsoncmg.com/",
+        "*://*.myfinancelab.com/",
+        "*://*.google-analytics.com/",
+        "https://www.google-analytics.com/"
+      ],
+      "js": ["cssreplace.js"],
+      "run_at": "document_end",
+      "all_frames": true
+    }],
+  "manifest_version": 1
+}
